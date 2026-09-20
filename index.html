@@ -1051,14 +1051,6 @@
             </div>
 
             <div class="field">
-              <label class="field-label" for="keyword">
-                今日关键词
-                <span class="field-hint">用一个词或短语</span>
-              </label>
-              <input type="text" id="keyword" name="keyword" placeholder="例：耐心 / 停下来 / 主动表达">
-            </div>
-
-            <div class="field">
               <label class="field-label" for="cardDescription">
                 牌面描述
                 <span class="field-hint">画面、人物、颜色、动作</span>
@@ -1098,13 +1090,21 @@
         <section class="form-section" aria-labelledby="actionHeading">
           <div class="section-heading">
             <div>
-              <h2 id="actionHeading">白天方向</h2>
+              <h2 id="actionHeading">白天·方向</h2>
               <p>看到资料后，把最有感觉的牌意留下来。</p>
             </div>
             <span class="section-number" aria-hidden="true">03</span>
           </div>
 
           <div class="field-grid">
+            <div class="field">
+              <label class="field-label" for="keyword">
+                今日关键词
+                <span class="field-hint">用一个词或短语</span>
+              </label>
+              <input type="text" id="keyword" name="keyword" placeholder="例：耐心 / 停下来 / 主动表达">
+            </div>
+
             <div class="field field-wide">
               <label class="field-label" for="daytimeMeaning">牌意笔记</label>
               <textarea id="daytimeMeaning" name="daytimeMeaning" placeholder="查到的牌意里，哪一句最触动我？"></textarea>
@@ -1374,7 +1374,6 @@
 - **日柱**：${markdownValue(record.dayPillar)}
 - **塔罗牌名**：${markdownValue(record.tarotCard)}
 - **正逆**：${markdownValue(record.orientation)}
-- **今日关键词**：${markdownValue(record.keyword)}
 
 ### 牌面描述
 
@@ -1394,7 +1393,9 @@ ${markdownValue(record.tomorrowPlan)}
 
 ${markdownValue(record.guessCorrespondence)}
 
-## 白天方向
+## 白天·方向
+
+- **今日关键词**：${markdownValue(record.keyword)}
 
 ### 牌意笔记
 
