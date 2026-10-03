@@ -1003,8 +1003,8 @@
 
     body.mobile-diary .date-display {
       margin: 0;
-      color: #a8c37e;
-      font-size: 19px;
+      color: #6f8f56;
+      font-size: 22px;
       font-weight: 800;
       line-height: 1.25;
       letter-spacing: 0;
@@ -1015,7 +1015,7 @@
       display: block;
       margin-top: 2px;
       color: #66716c;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 700;
     }
 
@@ -1023,16 +1023,17 @@
       content: "";
     }
 
-    body.mobile-diary .ganzhi-text {
+    body.mobile-diary input#dayPillar {
       width: 100%;
-      min-height: 34px;
+      min-height: 18px;
       margin: 0;
-      padding: 7px 9px;
+      padding: 0;
       color: #31413a;
-      text-align: center;
-      background: #ffffff;
-      border: 1px solid #dfe5e2;
-      border-radius: 7px;
+      text-align: left;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
       font-size: 12px;
       font-weight: 700;
       pointer-events: none;
@@ -1073,6 +1074,55 @@
     body.mobile-diary .moon-phase-icon {
       align-self: start;
       font-size: 32px;
+    }
+
+    body.mobile-diary .moon-phase-icon.moon-disc {
+      width: 30px;
+      height: 30px;
+      overflow: hidden;
+      background: #e8c64c;
+      border-radius: 50%;
+      box-shadow: inset -9px 0 0 0 #234f78;
+    }
+
+    body.mobile-diary .moon-disc.moon-new {
+      background: #234f78;
+      box-shadow: none;
+    }
+
+    body.mobile-diary .moon-disc.moon-full {
+      background: #e8c64c;
+      box-shadow: none;
+    }
+
+    body.mobile-diary .moon-disc.moon-waxing-crescent {
+      background: #234f78;
+      box-shadow: inset 8px 0 0 0 #e8c64c;
+    }
+
+    body.mobile-diary .moon-disc.moon-first-quarter {
+      background: linear-gradient(90deg, #234f78 50%, #e8c64c 50%);
+      box-shadow: none;
+    }
+
+    body.mobile-diary .moon-disc.moon-waxing-gibbous {
+      background: #e8c64c;
+      box-shadow: inset -8px 0 0 0 #234f78;
+    }
+
+    body.mobile-diary .moon-disc.moon-waning-gibbous {
+      background: #e8c64c;
+      box-shadow: inset 8px 0 0 0 #234f78;
+    }
+
+    body.mobile-diary .moon-disc.moon-last-quarter {
+      background: linear-gradient(90deg, #e8c64c 50%, #234f78 50%);
+      box-shadow: none;
+    }
+
+    body.mobile-diary .moon-disc.moon-waning-crescent {
+      background: #234f78;
+      box-shadow: inset -8px 0 0 0 #e8c64c;
     }
 
     body.mobile-diary .moon-phase-copy {
@@ -1290,6 +1340,74 @@
       line-height: 1.6;
     }
 
+    body.mobile-diary .plan-list {
+      display: grid;
+      gap: 7px;
+    }
+
+    body.mobile-diary .plan-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 8px;
+      align-items: center;
+    }
+
+    body.mobile-diary .plan-item-input {
+      width: 100%;
+      min-height: 38px;
+      padding: 8px 10px;
+      color: #31413a;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(23, 37, 31, 0.14);
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    body.mobile-diary .plan-item.is-done .plan-item-input {
+      color: rgba(49, 65, 58, 0.58);
+      text-decoration: line-through;
+    }
+
+    body.mobile-diary .plan-check-wrap {
+      display: grid;
+      place-items: center;
+    }
+
+    body.mobile-diary .plan-item-check {
+      width: 19px;
+      height: 19px;
+      margin: 0;
+      accent-color: #335e78;
+    }
+
+    body.mobile-diary .plan-remove {
+      display: grid;
+      width: 30px;
+      height: 30px;
+      place-items: center;
+      color: #66716c;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(23, 37, 31, 0.12);
+      border-radius: 7px;
+      font: inherit;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    body.mobile-diary .plan-add-button {
+      width: 100%;
+      min-height: 34px;
+      margin-top: 8px;
+      color: #335e78;
+      background: rgba(255, 255, 255, 0.45);
+      border: 1px dashed rgba(51, 94, 120, 0.42);
+      border-radius: 8px;
+      font: inherit;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
     body.mobile-diary .daily-actions {
       display: grid;
       gap: 8px;
@@ -1334,7 +1452,7 @@
     }
 
     body.mobile-diary .month-view {
-      padding: 10px 18px 24px;
+      padding: 8px 14px 24px;
     }
 
     body.mobile-diary .month-view[hidden] {
@@ -1342,29 +1460,58 @@
     }
 
     body.mobile-diary .month-view-heading {
-      display: flex;
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr) 42px;
+      gap: 8px;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
+    }
+
+    body.mobile-diary .month-nav-button {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      color: #17251f;
+      background: transparent;
+      border: 1px solid #dfe5e2;
+      border-radius: 50%;
+      font: inherit;
+      font-size: 18px;
+    }
+
+    body.mobile-diary .month-view-copy {
+      text-align: center;
     }
 
     body.mobile-diary .month-view-heading h2 {
       margin: 0;
       color: #6f8f56;
-      font-size: 19px;
+      font-size: 23px;
+      line-height: 1.15;
     }
 
-    body.mobile-diary .month-today-button {
-      min-height: 32px;
-      padding: 0 10px;
-      color: #335e78;
-      background: #ffffff;
-      border: 1px solid #dfe5e2;
-      border-radius: 7px;
-      font: inherit;
+    body.mobile-diary .month-view-ganzhi,
+    body.mobile-diary .month-view-terms {
+      margin: 4px 0 0;
+      color: #66716c;
       font-size: 11px;
-      font-weight: 800;
+      font-weight: 700;
+    }
+
+    body.mobile-diary .month-view-terms {
+      margin-top: 3px;
+      font-size: 10px;
+    }
+
+    body.mobile-diary .month-view-terms .jie {
+      color: #4d7f55;
+      font-weight: 900;
+    }
+
+    body.mobile-diary .month-view-terms .zhong {
+      color: #a86f16;
+      font-weight: 900;
     }
 
     body.mobile-diary .month-weekdays,
@@ -1386,34 +1533,171 @@
     }
 
     body.mobile-diary .month-day {
-      display: grid;
-      min-height: 38px;
-      place-items: center;
-      color: #31413a;
-      background: #ffffff;
+      position: relative;
+      display: flex;
+      min-height: 72px;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 5px 4px 6px;
+      overflow: hidden;
+      color: #17251f;
+      text-align: left;
+      background: #eceeec;
       border: 1px solid transparent;
       border-radius: 7px;
       font: inherit;
-      font-size: 12px;
-      font-weight: 700;
     }
 
     body.mobile-diary .month-day.is-empty {
       visibility: hidden;
     }
 
-    body.mobile-diary .month-day.is-selected {
-      color: #ffffff;
-      background: #719fb6;
+    body.mobile-diary .month-day.record.fire { background: #c65d58; }
+    body.mobile-diary .month-day.record.water { background: #6b9fc5; }
+    body.mobile-diary .month-day.record.air { background: #a9d0a9; }
+    body.mobile-diary .month-day.record.earth { background: #e2c85b; }
+
+    body.mobile-diary .month-day.record.major {
+      background: #ffffff;
+      border-width: 2px;
+      border-style: solid;
     }
 
-    body.mobile-diary .month-day.has-record::after {
-      width: 4px;
-      height: 4px;
-      margin-top: 2px;
-      content: "";
-      background: #a8c37e;
-      border-radius: 50%;
+    body.mobile-diary .month-day.record.major.fire { border-color: #c65d58; }
+    body.mobile-diary .month-day.record.major.water { border-color: #6b9fc5; }
+    body.mobile-diary .month-day.record.major.air { border-color: #a9d0a9; }
+    body.mobile-diary .month-day.record.major.earth { border-color: #e2c85b; }
+
+    body.mobile-diary .month-day.is-selected {
+      box-shadow: 0 0 0 3px rgba(23, 37, 31, 0.28);
+    }
+
+    body.mobile-diary .month-day-top {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2px;
+    }
+
+    body.mobile-diary .month-day-number {
+      font-size: 11px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    body.mobile-diary .month-term-badge {
+      display: grid;
+      min-width: 22px;
+      height: 16px;
+      place-items: center;
+      padding: 0 3px;
+      border-radius: 4px;
+      font-size: 8px;
+      font-weight: 900;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    body.mobile-diary .month-term-badge.jie {
+      color: #ffffff;
+      background: #4d7f55;
+    }
+
+    body.mobile-diary .month-term-badge.zhong {
+      color: #8c5f16;
+      background: #f2dfaa;
+    }
+
+    body.mobile-diary .month-day-name {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      font-size: 9px;
+      font-weight: 800;
+      line-height: 1.15;
+      text-overflow: ellipsis;
+    }
+
+    body.mobile-diary .month-detail {
+      display: grid;
+      min-height: 96px;
+      gap: 4px;
+      margin-top: 10px;
+      padding: 12px;
+      background: #ffffff;
+      border: 1px solid #dfe5e2;
+      border-radius: 10px;
+    }
+
+    body.mobile-diary .month-detail-title {
+      margin: 0;
+      color: #17251f;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    body.mobile-diary .month-detail-meta,
+    body.mobile-diary .month-detail-ganzhi,
+    body.mobile-diary .month-detail-term {
+      margin: 0;
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    body.mobile-diary .month-detail-meta,
+    body.mobile-diary .month-detail-term {
+      color: #66716c;
+    }
+
+    body.mobile-diary .month-detail-ganzhi {
+      color: #17251f;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    body.mobile-diary .month-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 11px;
+      margin-top: 9px;
+      color: #66716c;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    body.mobile-diary .month-legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    body.mobile-diary .month-legend-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+    }
+
+    body.mobile-diary .month-legend-swatch.fire { background: #c65d58; }
+    body.mobile-diary .month-legend-swatch.water { background: #6b9fc5; }
+    body.mobile-diary .month-legend-swatch.air { background: #a9d0a9; }
+    body.mobile-diary .month-legend-swatch.earth { background: #e2c85b; }
+    body.mobile-diary .month-legend-swatch.major {
+      background: #ffffff;
+      border: 2px solid #c65d58;
+    }
+
+    body.mobile-diary .month-save-button {
+      width: 100%;
+      min-height: 40px;
+      margin-top: 12px;
+      color: #335e78;
+      background: #ffffff;
+      border: 0;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 900;
     }
 
     body.mobile-diary .history-heading {
@@ -1471,15 +1755,26 @@
     }
 
     body.mobile-diary .nav-shape.square {
-      background: #335e78;
+      background: transparent;
+      border: 2px solid #b7beb9;
       border-radius: 3px;
+    }
+
+    body.mobile-diary .nav-item.active .nav-shape.square {
+      background: #335e78;
+      border-color: #335e78;
     }
 
     body.mobile-diary .nav-shape.circle {
       width: 20px;
       height: 20px;
-      border: 1px solid #cbd1cd;
+      border: 2px solid #b7beb9;
       border-radius: 50%;
+    }
+
+    body.mobile-diary .nav-item.active .nav-shape.circle {
+      background: #335e78;
+      border-color: #335e78;
     }
 
     body.mobile-diary .toast {
@@ -1540,7 +1835,7 @@
           <span class="date-weekday" id="dateWeekday"></span>
         </div>
         <div class="moon-phase" id="moonPhase" aria-live="polite">
-          <span class="moon-phase-icon" id="moonPhaseIcon" aria-hidden="true">🌑</span>
+          <span class="moon-phase-icon moon-disc moon-new" id="moonPhaseIcon" aria-hidden="true"></span>
           <span class="moon-phase-copy">
             <strong class="moon-phase-name" id="moonPhaseName">计算中</strong>
             <span class="moon-phase-detail" id="moonPhaseDetail">中国时区</span>
@@ -1694,8 +1989,9 @@
 
           <div class="field-grid">
             <div class="field">
-              <label class="field-label" for="tomorrowPlan">明天想做的事</label>
-              <textarea id="tomorrowPlan" name="tomorrowPlan" placeholder="明天只做哪一两件事，会让方向更清楚？"></textarea>
+              <label class="field-label">明天想做的事</label>
+              <div class="plan-list" id="planList"></div>
+              <button class="plan-add-button" id="addPlanItem" type="button" aria-label="添加一条计划">+</button>
             </div>
 
             <div class="field">
@@ -1774,13 +2070,34 @@
 
     <section class="month-view" id="monthView" hidden aria-labelledby="monthViewTitle">
       <div class="month-view-heading">
-        <h2 id="monthViewTitle">月视图</h2>
-        <button class="month-today-button" id="monthTodayButton" type="button">回到今天</button>
+        <button class="month-nav-button" id="prevMonthButton" type="button" aria-label="上一个月">‹</button>
+        <div class="month-view-copy">
+          <h2 id="monthViewTitle">月视图</h2>
+          <p class="month-view-ganzhi" id="monthViewGanzhi">干支计算中</p>
+          <p class="month-view-terms" id="monthViewTerms">节气与中气</p>
+        </div>
+        <button class="month-nav-button" id="nextMonthButton" type="button" aria-label="下一个月">›</button>
       </div>
       <div class="month-weekdays" aria-hidden="true">
         <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
       </div>
       <div class="month-grid" id="monthGrid"></div>
+      <div class="month-detail" aria-live="polite">
+        <h3 class="month-detail-title" id="monthDetailTitle">选择日期查看记录</h3>
+        <p class="month-detail-meta" id="monthDetailMeta">月视图只读取已保存的抽牌记录</p>
+        <p class="month-detail-ganzhi" id="monthDetailGanzhi">当日干支</p>
+        <p class="month-detail-term" id="monthDetailTerm">当日节气或中气</p>
+      </div>
+      <div class="month-legend" aria-label="元素图例">
+        <span class="month-legend-item"><span class="month-legend-swatch fire"></span>权杖 / 火</span>
+        <span class="month-legend-item"><span class="month-legend-swatch water"></span>圣杯 / 水</span>
+        <span class="month-legend-item"><span class="month-legend-swatch air"></span>宝剑 / 风</span>
+        <span class="month-legend-item"><span class="month-legend-swatch earth"></span>星币 / 土</span>
+        <span class="month-legend-item"><span class="month-legend-swatch major"></span>大牌</span>
+        <span class="month-legend-item"><span class="month-term-badge jie">节</span>换月节气</span>
+        <span class="month-legend-item"><span class="month-term-badge zhong">中</span>中气</span>
+      </div>
+      <button class="month-save-button" id="saveMonthButton" type="button">保存月视图图片</button>
     </section>
   </div>
 
@@ -11346,6 +11663,7 @@
       const dateDisplay = document.getElementById("dateDisplay");
       const dateMain = document.getElementById("dateMain");
       const dateWeekday = document.getElementById("dateWeekday");
+      const mobileHead = document.querySelector(".mobile-head");
       const historyList = document.getElementById("historyList");
       const historyCount = document.getElementById("historyCount");
       const saveButton = document.getElementById("saveButton");
@@ -11362,10 +11680,22 @@
       const historySection = document.getElementById("historySection");
       const monthView = document.getElementById("monthView");
       const monthViewTitle = document.getElementById("monthViewTitle");
+      const monthViewGanzhi = document.getElementById("monthViewGanzhi");
+      const monthViewTerms = document.getElementById("monthViewTerms");
       const monthGrid = document.getElementById("monthGrid");
-      const monthTodayButton = document.getElementById("monthTodayButton");
+      const monthDetailTitle = document.getElementById("monthDetailTitle");
+      const monthDetailMeta = document.getElementById("monthDetailMeta");
+      const monthDetailGanzhi = document.getElementById("monthDetailGanzhi");
+      const monthDetailTerm = document.getElementById("monthDetailTerm");
+      const prevMonthButton = document.getElementById("prevMonthButton");
+      const nextMonthButton = document.getElementById("nextMonthButton");
+      const saveMonthButton = document.getElementById("saveMonthButton");
+      const planList = document.getElementById("planList");
+      const addPlanItem = document.getElementById("addPlanItem");
 
       let toastTimer;
+      let monthCursor = null;
+      let selectedMonthDate = null;
 
       const textFields = [
         "tarotCard",
@@ -11373,7 +11703,6 @@
         "keyword",
         "cardDescription",
         "guessedMeaning",
-        "tomorrowPlan",
         "guessCorrespondence",
         "daytimeMeaning",
         "eveningReview",
@@ -11400,14 +11729,14 @@
         weekday: "long"
       });
       const moonPhasesByLunarDay = [
-        { maxDay: 1, icon: "🌑", name: "新月" },
-        { maxDay: 6, icon: "🌒", name: "蛾眉月" },
-        { maxDay: 8, icon: "🌓", name: "上弦月" },
-        { maxDay: 13, icon: "🌔", name: "盈凸月" },
-        { maxDay: 17, icon: "🌕", name: "满月" },
-        { maxDay: 22, icon: "🌖", name: "亏凸月" },
-        { maxDay: 24, icon: "🌗", name: "下弦月" },
-        { maxDay: 31, icon: "🌘", name: "残月" }
+        { maxDay: 1, className: "moon-new", name: "新月" },
+        { maxDay: 6, className: "moon-waxing-crescent", name: "蛾眉月" },
+        { maxDay: 8, className: "moon-first-quarter", name: "上弦月" },
+        { maxDay: 13, className: "moon-waxing-gibbous", name: "盈凸月" },
+        { maxDay: 17, className: "moon-full", name: "满月" },
+        { maxDay: 22, className: "moon-waning-gibbous", name: "亏凸月" },
+        { maxDay: 24, className: "moon-last-quarter", name: "下弦月" },
+        { maxDay: 31, className: "moon-waning-crescent", name: "残月" }
       ];
 
       function getDateParts(value) {
@@ -11473,7 +11802,7 @@
           ganzhi: `${lunar.getYearInGanZhi()}年 · ${lunar.getMonthInGanZhi()}月 · ${lunar.getDayInGanZhi()}日`,
           lunarDate: `农历${lunar.getMonthInChinese()}月${lunar.getDayInChinese()}`,
           moonName: moonPhaseInfo.name,
-          moonIcon: moonPhaseInfo.icon,
+          moonClassName: moonPhaseInfo.className,
           moonDetail: `农历${lunar.getMonthInChinese()}月${lunar.getDayInChinese()} · ${illumination}%`
         };
       }
@@ -11487,13 +11816,13 @@
         try {
           const calendarInfo = getCalendarInfo(value);
           dayPillarInput.value = calendarInfo.ganzhi;
-          moonPhaseIcon.textContent = calendarInfo.moonIcon;
+          moonPhaseIcon.className = `moon-phase-icon moon-disc ${calendarInfo.moonClassName}`;
           moonPhaseName.textContent = calendarInfo.moonName;
           moonPhaseDetail.textContent = calendarInfo.moonDetail;
           moonPhase.title = `${calendarInfo.lunarDate} · ${calendarInfo.moonName}`;
         } catch (error) {
           dayPillarInput.value = "计算失败";
-          moonPhaseIcon.textContent = "🌑";
+          moonPhaseIcon.className = "moon-phase-icon moon-disc moon-new";
           moonPhaseName.textContent = "月相不可用";
           moonPhaseDetail.textContent = "请检查本地计算库";
           moonPhase.title = "";
@@ -11525,6 +11854,7 @@
       }
 
       function getFormData() {
+        const planItems = getPlanItemsFromDom();
         const data = {
           date: dateInput.value,
           dayPillar: document.getElementById("dayPillar").value.trim(),
@@ -11533,7 +11863,8 @@
           keyword: document.getElementById("keyword").value.trim(),
           cardDescription: document.getElementById("cardDescription").value.trim(),
           guessedMeaning: document.getElementById("guessedMeaning").value.trim(),
-          tomorrowPlan: document.getElementById("tomorrowPlan").value.trim(),
+          tomorrowPlan: planItems.map((item) => item.text).join("\n"),
+          tomorrowPlanItems: planItems,
           guessCorrespondence: document.getElementById("guessCorrespondence").value.trim(),
           daytimeMeaning: document.getElementById("daytimeMeaning").value.trim(),
           eveningReview: document.getElementById("eveningReview").value.trim(),
@@ -11595,12 +11926,14 @@
             element.value = record[fieldName] || "";
           }
         });
+        renderPlanItems(normalizePlanItems(record));
         updateDateDisplay();
       }
 
       function clearForm() {
         clearDraft(dateInput.value || toDateKey(new Date()));
         form.reset();
+        renderPlanItems([]);
         dateInput.value = toDateKey(new Date());
         document.getElementById("orientation").value = "正位";
         updateDateDisplay();
@@ -11616,6 +11949,80 @@
         toastTimer = window.setTimeout(() => {
           toast.classList.remove("is-visible");
         }, 2800);
+      }
+
+      function normalizePlanItems(record) {
+        if (Array.isArray(record.tomorrowPlanItems)) {
+          return record.tomorrowPlanItems
+            .filter((item) => item && typeof item === "object")
+            .map((item) => ({ text: String(item.text || ""), done: Boolean(item.done) }));
+        }
+
+        if (typeof record.tomorrowPlan === "string" && record.tomorrowPlan.trim()) {
+          return record.tomorrowPlan
+            .split(/\r?\n/)
+            .map((text) => text.trim())
+            .filter(Boolean)
+            .map((text) => ({ text, done: false }));
+        }
+
+        return [];
+      }
+
+      function getPlanItemsFromDom() {
+        return Array.from(planList.querySelectorAll(".plan-item")).map((row) => ({
+          text: row.querySelector(".plan-item-input").value.trim(),
+          done: row.querySelector(".plan-item-check").checked
+        })).filter((item) => item.text || item.done);
+      }
+
+      function createPlanRow(item = { text: "", done: false }) {
+        const row = document.createElement("div");
+        const input = document.createElement("input");
+        const checkLabel = document.createElement("label");
+        const checkbox = document.createElement("input");
+        const removeButton = document.createElement("button");
+
+        row.className = "plan-item";
+        if (item.done) {
+          row.classList.add("is-done");
+        }
+        input.className = "plan-item-input";
+        input.type = "text";
+        input.value = item.text;
+        input.placeholder = "写下一件明天想做的事";
+        input.setAttribute("aria-label", "明天想做的事");
+        checkLabel.className = "plan-check-wrap";
+        checkbox.className = "plan-item-check";
+        checkbox.type = "checkbox";
+        checkbox.checked = item.done;
+        checkbox.setAttribute("aria-label", "标记为已完成");
+        checkLabel.appendChild(checkbox);
+        removeButton.className = "plan-remove";
+        removeButton.type = "button";
+        removeButton.textContent = "×";
+        removeButton.setAttribute("aria-label", "删除这条计划");
+
+        checkbox.addEventListener("change", () => {
+          row.classList.toggle("is-done", checkbox.checked);
+        });
+        removeButton.addEventListener("click", () => {
+          row.remove();
+          if (!planList.children.length) {
+            createPlanRow();
+          }
+          saveDraft();
+        });
+
+        row.append(input, checkLabel, removeButton);
+        planList.appendChild(row);
+        return input;
+      }
+
+      function renderPlanItems(items = []) {
+        planList.replaceChildren();
+        const normalized = items.length ? items : [{ text: "", done: false }];
+        normalized.forEach((item) => createPlanRow(item));
       }
 
       function initializeRecordBands() {
@@ -11668,12 +12075,27 @@
             const isOpen = section.classList.toggle("is-open");
             button.setAttribute("aria-expanded", String(isOpen));
           });
+
+          if (index < 2) {
+            section.classList.add("is-open");
+            button.setAttribute("aria-expanded", "true");
+          }
         });
       }
 
       function markdownValue(value) {
         const text = String(value || "").trim();
         return text || "（未填写）";
+      }
+
+      function createPlanMarkdown(record) {
+        const items = normalizePlanItems(record);
+        if (!items.length) {
+          return markdownValue(record.tomorrowPlan);
+        }
+        return items
+          .map((item) => `- [${item.done ? "x" : " "}] ${item.text || "（未填写）"}`)
+          .join("\n");
       }
 
       function createMarkdown(record) {
@@ -11709,7 +12131,7 @@ ${markdownValue(record.guessedMeaning)}
 
 ### 明天想做的事
 
-${markdownValue(record.tomorrowPlan)}
+${createPlanMarkdown(record)}
 
 ### 猜想对应
 
@@ -11756,22 +12178,292 @@ ${markdownValue(record.ganzhiCorrespondence)}
         window.setTimeout(() => URL.revokeObjectURL(url), 1000);
       }
 
-      function renderMonthView() {
-        const parts = getDateParts(dateInput.value || toDateKey(new Date()));
+      const JIE_TERMS = new Set([
+        "立春", "惊蛰", "清明", "立夏", "芒种", "小暑",
+        "立秋", "白露", "寒露", "立冬", "大雪", "小寒"
+      ]);
+      const MAJOR_ELEMENT_BY_NAME = {
+        "愚者": "air", "魔术师": "air", "女祭司": "water", "皇后": "earth",
+        "皇帝": "fire", "教皇": "earth", "恋人": "air", "战车": "water",
+        "力量": "fire", "隐士": "earth", "命运之轮": "fire", "正义": "air",
+        "倒吊人": "water", "死神": "water", "节制": "fire", "恶魔": "earth",
+        "高塔": "fire", "星星": "air", "月亮": "water", "太阳": "fire",
+        "审判": "fire", "世界": "earth"
+      };
+
+      function getCardElementInfo(cardName) {
+        const card = String(cardName || "").trim();
+        if (!card) {
+          return null;
+        }
+        if (card.startsWith("权杖")) return { element: "fire", major: false };
+        if (card.startsWith("圣杯")) return { element: "water", major: false };
+        if (card.startsWith("宝剑")) return { element: "air", major: false };
+        if (card.startsWith("星币")) return { element: "earth", major: false };
+
+        const baseName = card.split("（")[0].trim();
+        const element = MAJOR_ELEMENT_BY_NAME[baseName];
+        return element ? { element, major: true } : null;
+      }
+
+      function getTermInfoForDate(dateKey) {
+        const parts = getDateParts(dateKey);
+        if (!parts || !window.Solar) {
+          return null;
+        }
+        const table = window.Solar.fromYmd(parts.year, parts.month, 15).getLunar().getJieQiTable();
+        const entry = Object.entries(table).find(([, date]) => String(date) === dateKey);
+        if (!entry) {
+          return null;
+        }
+        return {
+          name: entry[0],
+          kind: JIE_TERMS.has(entry[0]) ? "jie" : "zhong"
+        };
+      }
+
+      function getMonthSolarTerms(year, month) {
+        if (!window.Solar) {
+          return [];
+        }
+        const prefix = `${year}-${String(month).padStart(2, "0")}-`;
+        const table = window.Solar.fromYmd(year, month, 15).getLunar().getJieQiTable();
+        return Object.entries(table)
+          .filter(([, date]) => String(date).startsWith(prefix))
+          .map(([name, date]) => {
+            const value = String(date);
+            return {
+              name,
+              day: Number(value.slice(8, 10)),
+              kind: JIE_TERMS.has(name) ? "jie" : "zhong"
+            };
+          })
+          .sort((a, b) => a.day - b.day);
+      }
+
+      function getYearMonthGanzhi(dateKey) {
+        const info = getCalendarInfo(dateKey);
+        const [year, month] = info.ganzhi.split(" · ");
+        return `${year} · ${month}`;
+      }
+
+      function renderMonthDetail() {
+        const record = loadRecords().find((item) => item.date === selectedMonthDate);
+        const parts = getDateParts(selectedMonthDate);
+        const term = getTermInfoForDate(selectedMonthDate);
         if (!parts) {
           return;
         }
 
-        const year = parts.year;
-        const month = parts.month;
+        monthDetailGanzhi.textContent = getCalendarInfo(selectedMonthDate).ganzhi;
+        monthDetailTerm.textContent = term
+          ? term.kind === "jie" ? `节气：${term.name}（换月节）` : `中气：${term.name}`
+          : "当日无节气或中气交接";
+
+        if (!record) {
+          monthDetailTitle.textContent = term
+            ? `${parts.month}月${parts.day}日 · ${term.name}`
+            : `${parts.month}月${parts.day}日 · 未抽牌`;
+          monthDetailMeta.textContent = term
+            ? term.kind === "jie" ? "节气 · 用于切换干支月" : "中气 · 位于月中，用于农历月份规则"
+            : "这一天还没有保存抽牌记录";
+          return;
+        }
+
+        const elementInfo = getCardElementInfo(record.tarotCard);
+        const elementLabel = elementInfo
+          ? elementInfo.element === "fire" ? "火元素"
+            : elementInfo.element === "water" ? "水元素"
+            : elementInfo.element === "air" ? "风元素" : "土元素"
+          : "元素未知";
+        monthDetailTitle.textContent = `${parts.month}月${parts.day}日 · ${record.tarotCard || "未选牌"}`;
+        monthDetailMeta.textContent = `${record.orientation || "正位"} · ${elementInfo?.major ? "大阿尔卡纳" : "小阿尔卡纳"} · ${elementLabel}`;
+      }
+
+      function downloadMonthImage() {
+        if (!monthCursor) {
+          return;
+        }
+
+        const { year, month } = monthCursor;
         const monthKey = `${year}-${String(month).padStart(2, "0")}`;
         const firstDay = parseDateKey(`${monthKey}-01`);
         const leadingEmptyDays = firstDay.getUTCDay();
         const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
-        const recordDates = new Set(loadRecords().map((record) => record.date));
+        const records = new Map(loadRecords().map((record) => [record.date, record]));
+        const terms = getMonthSolarTerms(year, month);
+        const termMap = new Map(terms.map((term) => [term.day, term]));
+        const width = 430;
+        const height = 720;
+        const scale = 2;
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+        const colors = {
+          fire: "#c65d58",
+          water: "#6b9fc5",
+          air: "#a9d0a9",
+          earth: "#e2c85b",
+          empty: "#eceeec",
+          ink: "#17251f",
+          muted: "#66716c",
+          paper: "#f7f4ee",
+          line: "#dfe5e2"
+        };
+
+        canvas.width = width * scale;
+        canvas.height = height * scale;
+        context.scale(scale, scale);
+        context.fillStyle = colors.paper;
+        context.fillRect(0, 0, width, height);
+
+        context.fillStyle = "#a8c37e";
+        context.font = '700 23px "Microsoft YaHei UI", sans-serif';
+        context.textAlign = "center";
+        context.fillText(`${year}年${month}月`, width / 2, 34);
+
+        const firstGanzhi = getYearMonthGanzhi(`${monthKey}-01`);
+        const lastGanzhi = getYearMonthGanzhi(`${monthKey}-${String(daysInMonth).padStart(2, "0")}`);
+        context.fillStyle = colors.muted;
+        context.font = '700 11px "Microsoft YaHei UI", sans-serif';
+        context.fillText(firstGanzhi === lastGanzhi ? firstGanzhi : `${firstGanzhi} → ${lastGanzhi}`, width / 2, 52);
+        context.font = '700 10px "Microsoft YaHei UI", sans-serif';
+        context.fillText(terms.map((term) => `${term.kind === "jie" ? "节" : "中"}：${term.name} ${month}/${term.day}`).join(" · "), width / 2, 68);
+
+        const gridX = 18;
+        const gridY = 88;
+        const gap = 4;
+        const cellWidth = (width - gridX * 2 - gap * 6) / 7;
+        const cellHeight = 74;
+        const weekdays = ["日", "一", "二", "三", "四", "五", "六"];
+
+        context.fillStyle = colors.muted;
+        context.font = '700 10px "Microsoft YaHei UI", sans-serif';
+        weekdays.forEach((weekday, index) => {
+          context.fillText(weekday, gridX + index * (cellWidth + gap) + cellWidth / 2, gridY - 7);
+        });
+
+        for (let index = 0; index < 42; index += 1) {
+          const day = index - leadingEmptyDays + 1;
+          const column = index % 7;
+          const row = Math.floor(index / 7);
+          const x = gridX + column * (cellWidth + gap);
+          const y = gridY + row * (cellHeight + gap);
+
+          context.fillStyle = colors.empty;
+          context.fillRect(x, y, cellWidth, cellHeight);
+
+          if (day < 1 || day > daysInMonth) {
+            continue;
+          }
+
+          const dateKey = `${monthKey}-${String(day).padStart(2, "0")}`;
+          const record = records.get(dateKey);
+          const elementInfo = record ? getCardElementInfo(record.tarotCard) : null;
+
+          if (record && elementInfo) {
+            context.fillStyle = elementInfo.major ? "#ffffff" : colors[elementInfo.element];
+            context.fillRect(x, y, cellWidth, cellHeight);
+            if (elementInfo.major) {
+              context.strokeStyle = colors[elementInfo.element];
+              context.lineWidth = 2;
+              context.strokeRect(x + 1, y + 1, cellWidth - 2, cellHeight - 2);
+            }
+          }
+
+          context.fillStyle = colors.ink;
+          context.textAlign = "left";
+          context.font = '800 10px "Microsoft YaHei UI", sans-serif';
+          context.fillText(String(day), x + 4, y + 13);
+
+          const term = termMap.get(day);
+          if (term) {
+            context.fillStyle = term.kind === "jie" ? "#4d7f55" : "#d9bd6c";
+            context.fillRect(x + cellWidth - 28, y + 4, 24, 12);
+            context.fillStyle = term.kind === "jie" ? "#ffffff" : "#7d5718";
+            context.font = '800 7px "Microsoft YaHei UI", sans-serif';
+            context.fillText(term.name, x + cellWidth - 26, y + 13);
+          }
+
+          if (record?.tarotCard) {
+            context.fillStyle = colors.ink;
+            context.font = '700 8px "Microsoft YaHei UI", sans-serif';
+            context.fillText(record.tarotCard.split("（")[0], x + 4, y + cellHeight - 7, cellWidth - 8);
+          }
+        }
+
+        const legendY = gridY + 6 * (cellHeight + gap) + 14;
+        const legend = [
+          ["权杖 / 火", colors.fire],
+          ["圣杯 / 水", colors.water],
+          ["宝剑 / 风", colors.air],
+          ["星币 / 土", colors.earth],
+          ["大牌", "#ffffff"]
+        ];
+        context.textAlign = "left";
+        context.font = '700 10px "Microsoft YaHei UI", sans-serif';
+        let legendX = gridX;
+        legend.forEach(([label, color]) => {
+          context.fillStyle = color;
+          context.fillRect(legendX, legendY - 8, 10, 10);
+          context.strokeStyle = label === "大牌" ? colors.fire : color;
+          context.lineWidth = label === "大牌" ? 2 : 1;
+          if (label === "大牌") {
+            context.strokeRect(legendX, legendY - 8, 10, 10);
+          }
+          context.fillStyle = colors.muted;
+          context.fillText(label, legendX + 14, legendY);
+          legendX += context.measureText(label).width + 34;
+        });
+
+        canvas.toBlob((blob) => {
+          if (!blob) {
+            showToast("月视图图片生成失败。", true);
+            return;
+          }
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = `${monthKey}-tarot-month.png`;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+          showToast(`${year}年${month}月图片已导出。`);
+        }, "image/png");
+      }
+
+      function renderMonthView() {
+        if (!monthCursor) {
+          const parts = getDateParts(dateInput.value || toDateKey(new Date()));
+          monthCursor = parts ? { year: parts.year, month: parts.month } : null;
+        }
+        if (!monthCursor) {
+          return;
+        }
+
+        const { year, month } = monthCursor;
+        const monthKey = `${year}-${String(month).padStart(2, "0")}`;
+        const firstDay = parseDateKey(`${monthKey}-01`);
+        const leadingEmptyDays = firstDay.getUTCDay();
+        const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
+        const records = new Map(loadRecords().map((record) => [record.date, record]));
+        const terms = getMonthSolarTerms(year, month);
+        const monthTerms = new Map(terms.map((term) => [term.day, term]));
         const fragment = document.createDocumentFragment();
 
+        if (!selectedMonthDate?.startsWith(monthKey)) {
+          selectedMonthDate = `${monthKey}-01`;
+        }
+
+        const firstGanzhi = getYearMonthGanzhi(`${monthKey}-01`);
+        const lastGanzhi = getYearMonthGanzhi(`${monthKey}-${String(daysInMonth).padStart(2, "0")}`);
         monthViewTitle.textContent = `${year}年${month}月`;
+        monthViewGanzhi.textContent = firstGanzhi === lastGanzhi ? firstGanzhi : `${firstGanzhi} → ${lastGanzhi}`;
+        monthViewTerms.innerHTML = terms.length
+          ? terms.map((term) => term.kind === "jie"
+            ? `<span class="jie">节：${term.name} ${month}/${term.day}</span>`
+            : `<span class="zhong">中：${term.name} ${month}/${term.day}</span>`).join(" · ")
+          : "本月节气待计算";
         monthGrid.replaceChildren();
 
         for (let index = 0; index < leadingEmptyDays; index += 1) {
@@ -11782,37 +12474,56 @@ ${markdownValue(record.ganzhiCorrespondence)}
 
         for (let day = 1; day <= daysInMonth; day += 1) {
           const dateKey = `${monthKey}-${String(day).padStart(2, "0")}`;
+          const record = records.get(dateKey);
+          const elementInfo = record ? getCardElementInfo(record.tarotCard) : null;
+          const term = monthTerms.get(day);
           const button = document.createElement("button");
+          const top = document.createElement("span");
+          const dayNumber = document.createElement("span");
+          const cardName = document.createElement("span");
+
           button.className = "month-day";
           button.type = "button";
-          button.textContent = String(day);
           button.dataset.date = dateKey;
-          button.setAttribute("aria-label", `打开 ${dateKey} 的记录`);
-          if (dateKey === dateInput.value) {
+          button.setAttribute("aria-label", `查看 ${dateKey} 的记录`);
+          top.className = "month-day-top";
+          dayNumber.className = "month-day-number";
+          dayNumber.textContent = String(day);
+          top.appendChild(dayNumber);
+
+          if (term) {
+            const badge = document.createElement("span");
+            badge.className = `month-term-badge ${term.kind}`;
+            badge.textContent = term.name;
+            top.appendChild(badge);
+          }
+
+          cardName.className = "month-day-name";
+          cardName.textContent = record?.tarotCard || "";
+          button.append(top, cardName);
+
+          if (record && elementInfo) {
+            button.classList.add("record", elementInfo.element);
+            if (elementInfo.major) {
+              button.classList.add("major");
+            }
+          }
+          if (dateKey === selectedMonthDate) {
             button.classList.add("is-selected");
           }
-          if (recordDates.has(dateKey)) {
-            button.classList.add("has-record");
-          }
           button.addEventListener("click", () => {
-            const record = loadRecords().find((item) => item.date === dateKey);
-            if (record) {
-              fillForm(record);
-            } else {
-              form.reset();
-              dateInput.value = dateKey;
-              document.getElementById("orientation").value = "正位";
-              updateDateDisplay();
-            }
-            showDailyView();
+            selectedMonthDate = dateKey;
+            renderMonthView();
           });
           fragment.appendChild(button);
         }
 
         monthGrid.appendChild(fragment);
+        renderMonthDetail();
       }
 
       function showDailyView() {
+        mobileHead.hidden = false;
         form.hidden = false;
         dailyActions.hidden = false;
         historySection.hidden = false;
@@ -11822,6 +12533,10 @@ ${markdownValue(record.ganzhiCorrespondence)}
       }
 
       function showMonthView() {
+        const parts = getDateParts(dateInput.value || toDateKey(new Date()));
+        monthCursor = parts ? { year: parts.year, month: parts.month } : monthCursor;
+        selectedMonthDate = dateInput.value || selectedMonthDate || toDateKey(new Date());
+        mobileHead.hidden = true;
         renderMonthView();
         form.hidden = true;
         dailyActions.hidden = true;
@@ -11942,6 +12657,12 @@ ${markdownValue(record.ganzhiCorrespondence)}
         handleSave();
       });
 
+      addPlanItem.addEventListener("click", () => {
+        const input = createPlanRow();
+        input.focus();
+        saveDraft();
+      });
+
       dailyNavButton.addEventListener("click", () => {
         showDailyView();
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -11949,13 +12670,36 @@ ${markdownValue(record.ganzhiCorrespondence)}
 
       monthNavButton.addEventListener("click", showMonthView);
 
-      monthTodayButton.addEventListener("click", () => {
-        dateInput.value = toDateKey(new Date());
-        updateDateDisplay();
+      prevMonthButton.addEventListener("click", () => {
+        if (!monthCursor) {
+          return;
+        }
+        monthCursor.month -= 1;
+        if (monthCursor.month === 0) {
+          monthCursor.month = 12;
+          monthCursor.year -= 1;
+        }
+        selectedMonthDate = `${monthCursor.year}-${String(monthCursor.month).padStart(2, "0")}-01`;
         renderMonthView();
       });
 
+      nextMonthButton.addEventListener("click", () => {
+        if (!monthCursor) {
+          return;
+        }
+        monthCursor.month += 1;
+        if (monthCursor.month === 13) {
+          monthCursor.month = 1;
+          monthCursor.year += 1;
+        }
+        selectedMonthDate = `${monthCursor.year}-${String(monthCursor.month).padStart(2, "0")}-01`;
+        renderMonthView();
+      });
+
+      saveMonthButton.addEventListener("click", downloadMonthImage);
+
       initializeRecordBands();
+      renderPlanItems([]);
       showDailyView();
       dateInput.value = toDateKey(new Date());
       document.getElementById("orientation").value = "正位";
